@@ -7,7 +7,9 @@ class Participante {
       this.avatar = avatar;
       this.entradaNaSala = entradaNaSala;
       this.tempoDeFala = tempoDeFala;
-      console.log("Participante construido:", this)
+      this.tempoDeFalaAcumulado = 0;     
+      this.populacaoAcumulada = 0;
+     // console.log("Participante construido:", this)
       return this
     }
   }

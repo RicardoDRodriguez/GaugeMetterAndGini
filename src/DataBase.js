@@ -79,17 +79,45 @@ class DataBase {
     const math = require('mathjs');
     
     console.log("Colecao de participantes: ", DataBase.participantes);
-    const participantesOrdenados = DataBase.participantes.slice().sort((a, b) => a.tempoDeFala - b.tempoDeFala);
+    const participantesOrdenados = DataBase.participantes.slice().sort((a, b) => b.tempoDeFala - a.tempoDeFala);
+    
+    
+    
+    let fatorPercentual = 0
+    let acumulaPercentual = 0
+    let tempoDeFalaAcumulado = 0
+
+    if (participantesOrdenados.length > 0) {
+       fatorPercentual = 100 / participantesOrdenados.length
+    }
 
     const aTempoFala = []
+    const aFatorPercentual = []
+    const participantesOrdenadosCompleto = []
+    
     participantesOrdenados.forEach((participante) => {
-      aTempoFala.push(participante.tempoDeFala)  
-     });
-    console.log("Tempo de fala ordenado:", aTempoFala)
+      // Carrega vetor de tempo de fala
+      aTempoFala.push(participante.tempoDeFala)
 
-    /*
-       Calcula a variancia e o desvio padráo
-    */
+      // Carrega Vetor de fator percentual
+      acumulaPercentual += fatorPercentual 
+      aFatorPercentual.push(acumulaPercentual)
+    
+      // Calcula tempo de Fala Acumulado
+      tempoDeFalaAcumulado += participante.tempoDeFala
+
+      // Atualiza percentual acumulado 
+      participante.populacaoAcumulada = acumulaPercentual
+      
+      // Atualiza tempo de fala acumulado
+      participante.tempoDeFalaAcumulado = tempoDeFalaAcumulado
+
+      // Guarda vetor em participantesOrdenadosCompleto
+      participantesOrdenadosCompleto.push(participante);
+
+    });
+    console.log("Tempo de fala ordenado:", aTempoFala)
+    console.log("Participantes Ordenados Com populacaoAcumulada", participantesOrdenadosCompleto)
 
     const variance = math.variance(aTempoFala);
     const stdDeviation = math.std(aTempoFala);
@@ -126,9 +154,14 @@ class DataBase {
         }
  
     }
+
+    
     const coefVariacao = coeficienteDeVariacao(mediaPartic, stdDeviation);
     console.log("Coeficiente de Variacao:",coefVariacao)
 
+
+
+    
     // Calcula a soma acumulaomativa das frequências relativas acumuladas
     let somaFrequenciasRelativasAcumuladas = 0;
     const giniValues = participantesOrdenados.map((participante, index) => {
