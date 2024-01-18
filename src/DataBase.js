@@ -91,10 +91,24 @@ class DataBase {
        fatorPercentual = 100 / participantesOrdenados.length
     }
 
+ /*
+      Calcula a soma acumulativa dos tempos de fala dos participantes
+    */
+      const ocupantesDaSala= DataBase.participantes.length
+      const somaAcumulativa = participantesOrdenados.reduce((soma, participante) => {
+        soma += participante.tempoDeFala;
+        return soma;
+      }, 0);
+      console.log("Soma dos tempos:", somaAcumulativa)
+      console.log("Ocupantes da Sala:", ocupantesDaSala) 
+      
+
     const aTempoFala = []
     const aFatorPercentual = []
     const participantesOrdenadosCompleto = []
-    
+    var populacaoAcumuladaAnterior = 0
+    var percentualAcumuloFalaAnterior = 0
+    var privez = true
     participantesOrdenados.forEach((participante) => {
       // Carrega vetor de tempo de fala
       aTempoFala.push(participante.tempoDeFala)
@@ -111,9 +125,34 @@ class DataBase {
       
       // Atualiza tempo de fala acumulado
       participante.tempoDeFalaAcumulado = tempoDeFalaAcumulado
+      participante.percentualAcumuloFala = (tempoDeFalaAcumulado / somaAcumulativa) * 100
+      
+      // Calcula o fator de Lorens
+    
+      if (! privez){
+        /*
+          Os valores apresentados são percentuais, por isso a divisão por 100
+        */
+        var fatorDeLorenz = (((populacaoAcumuladaAnterior/100+ acumulaPercentual/100) *
+                         (participante.percentualAcumuloFala/100-percentualAcumuloFalaAnterior/100)) * 0.5);
+         participante.fatorDeLorenz = fatorDeLorenz;
 
+        /* console.log ("População acumulada anterior:", populacaoAcumuladaAnterior)
+         console.log ("População acumulada:", acumulaPercentual)
+         console.log ("percentual acumula fala:", participante.percentualAcumuloFala)
+         console.log ("Percentual acumula anterior", percentualAcumuloFalaAnterior)
+         console.log ("Fator de Lorenz", fatorDeLorenz)*/
+         
+        }
       // Guarda vetor em participantesOrdenadosCompleto
       participantesOrdenadosCompleto.push(participante);
+      
+      populacaoAcumuladaAnterior = participante.populacaoAcumulada
+      percentualAcumuloFalaAnterior = participante.percentualAcumuloFala
+
+      privez = false
+      // Calcula a curva de Lorens
+
 
     });
     console.log("Tempo de fala ordenado:", aTempoFala)
@@ -125,17 +164,7 @@ class DataBase {
     console.log('Variância:', variance);
     console.log('Desvio Padrão:', stdDeviation);
     
-    /*
-      Calcula a soma acumulativa dos tempos de fala dos participantes
-    */
-    const ocupantesDaSala= DataBase.participantes.length
-    const somaAcumulativa = participantesOrdenados.reduce((soma, participante) => {
-      soma += participante.tempoDeFala;
-      return soma;
-    }, 0);
-    console.log("Soma dos tempos:", somaAcumulativa)
-    console.log("Ocupantes da Sala:", ocupantesDaSala) 
-    
+   
     /*
       Calcula a media dos tempos de fala dos participantes
     */

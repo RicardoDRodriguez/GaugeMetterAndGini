@@ -9,6 +9,8 @@ class Participante {
       this.tempoDeFala = tempoDeFala;
       this.tempoDeFalaAcumulado = 0;     
       this.populacaoAcumulada = 0;
+      this.percentualAcumuloFala = 0;
+      this.fatorDeLorenz = 0;
      // console.log("Participante construido:", this)
       return this
     }
