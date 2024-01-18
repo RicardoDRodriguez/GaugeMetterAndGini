@@ -109,6 +109,7 @@ class DataBase {
     var populacaoAcumuladaAnterior = 0
     var percentualAcumuloFalaAnterior = 0
     var privez = true
+    var fatorDeLorenzAcumulado = 0
     participantesOrdenados.forEach((participante) => {
       // Carrega vetor de tempo de fala
       aTempoFala.push(participante.tempoDeFala)
@@ -128,7 +129,7 @@ class DataBase {
       participante.percentualAcumuloFala = (tempoDeFalaAcumulado / somaAcumulativa) * 100
       
       // Calcula o fator de Lorens
-    
+
       if (! privez){
         /*
           Os valores apresentados são percentuais, por isso a divisão por 100
@@ -136,13 +137,13 @@ class DataBase {
         var fatorDeLorenz = (((populacaoAcumuladaAnterior/100+ acumulaPercentual/100) *
                          (participante.percentualAcumuloFala/100-percentualAcumuloFalaAnterior/100)) * 0.5);
          participante.fatorDeLorenz = fatorDeLorenz;
-
+         fatorDeLorenzAcumulado += fatorDeLorenz
         /* console.log ("População acumulada anterior:", populacaoAcumuladaAnterior)
          console.log ("População acumulada:", acumulaPercentual)
          console.log ("percentual acumula fala:", participante.percentualAcumuloFala)
          console.log ("Percentual acumula anterior", percentualAcumuloFalaAnterior)
          console.log ("Fator de Lorenz", fatorDeLorenz)*/
-         
+
         }
       // Guarda vetor em participantesOrdenadosCompleto
       participantesOrdenadosCompleto.push(participante);
@@ -187,19 +188,9 @@ class DataBase {
     
     const coefVariacao = coeficienteDeVariacao(mediaPartic, stdDeviation);
     console.log("Coeficiente de Variacao:",coefVariacao)
-
-
-
-    
-    // Calcula a soma acumulaomativa das frequências relativas acumuladas
-    let somaFrequenciasRelativasAcumuladas = 0;
-    const giniValues = participantesOrdenados.map((participante, index) => {
-      somaFrequenciasRelativasAcumuladas += (participante.tempoDeFala / somaAcumulativa);
-      return (index + 1) / participantesOrdenados.length - somaFrequenciasRelativasAcumuladas;
-    });
-
+ 
     // Calcula o índice de Gini
-    const giniIndex = 1 - 2 * giniValues.reduce((soma, valor) => soma + valor, 0);
+    const giniIndex = 1-(1- (2 * fatorDeLorenzAcumulado))
 
     console.log('Índice de Gini:', giniIndex);
     return giniIndex;
