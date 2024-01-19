@@ -69,9 +69,9 @@ class DataBase {
     new Participante("Media Interatividade",15, 1, "Isis", "avatar", 10, 43),
     new Participante("Media Interatividade",16, 1, "Jones", "avatar", 10, 21),
     //new Participante("Media Interatividade",17, 1, "Monica", "avatar", 10, 300),
-    new Participante("Media Interatividade",18, 1, "Monique", "avatar", 10, 300),
-    new Participante("Media Interatividade",19, 1, "Rodrigo", "avatar", 10, 300),
-    new Participante("Media Interatividade",20, 1, "Silvia", "avatar", 10, 300)
+    //new Participante("Media Interatividade",18, 1, "Monique", "avatar", 10, 300),
+    //new Participante("Media Interatividade",19, 1, "Rodrigo", "avatar", 10, 300),
+    //new Participante("Media Interatividade",20, 1, "Silvia", "avatar", 10, 300)
     
   ]
   
