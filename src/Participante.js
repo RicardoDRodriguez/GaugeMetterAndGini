@@ -13,6 +13,6 @@ class Participante {
       this.fatorDeLorenz = 0;
      // console.log("Participante construido:", this)
       return this
-    }
   }
+}
   export default Participante

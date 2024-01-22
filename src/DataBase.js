@@ -1,7 +1,6 @@
-//import { useState } from 'react';
-//import ReactDOM from 'react-dom';
-//import math from 'mathjs';
+
 import Participante from "./Participante";
+import ParticipanteDAO from "./ParticipanteDAO";
 
 
 class DataBase {
@@ -78,36 +77,6 @@ class DataBase {
 
   constructor() {
       console.clear();
-  }
-
-  /*
-     Insere os dados do participante no ParticipanteDAO
-  */
-  static insereParticipantesNoBancoDeDados (participantes){
-
-    const ParticipanteDAO = require('./ParticipanteDAO'); 
-    const mongoose = require('mongoose');
-    
-    // Conectando ao MongoDB com usuário e senha
-    mongoose.connect('mongodb://admin:password@localhost:27017/seu-banco-de-dados', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      authSource: 'admin'
-    })
-    .then(() => {
-      console.log('Conexão ao MongoDB estabelecida com sucesso.');
-      //Uso do DAO
-      DataBase.participantes.forEach((participante) => {
-        ParticipanteDAO.adicionarParticipante(participante);
-      });
-    })
-    .catch((error) => {
-      console.error('Erro ao conectar ao MongoDB:', error);
-    })
-    .finally(() => {
-      // Feche a conexão aqui
-      mongoose.connection.close();
-    });
   }
      
   static percorrerParticipantes(){
@@ -199,6 +168,8 @@ class DataBase {
 
 
     });
+    
+    
     console.log("Tempo de fala ordenado:", aTempoFala)
     console.log("Participantes Ordenados Com populacaoAcumulada", participantesOrdenadosCompleto)
 
@@ -233,7 +204,11 @@ class DataBase {
     console.log("Coeficiente de Variacao:",coefVariacao)
 
     console.log("insere dados no banco de dados")
-    DataBase.insereParticipantesNoBancoDeDados(participantesOrdenados);
+    try {
+      ParticipanteDAO.insereParticipantesNoBancoDeDados(participantesOrdenados);  
+    } catch (error) {
+      console.error('Não foi possivel processar banco de dados',error)
+    }
 
     // Calcula o índice de Gini
     const giniIndex = 1-(1- (2 * fatorDeLorenzAcumulado))

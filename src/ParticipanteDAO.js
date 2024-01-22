@@ -1,6 +1,10 @@
-const mongoose = require('mongoose');
 
-// Definindo o esquema do Participante
+
+
+const mongoose = require('mongoose');
+const uri = 'mongodb://admin:password@localhost:27017/JistiDatabase'
+
+ // Definindo o esquema do Participante   
 const participanteSchema = new mongoose.Schema({
   sala: String,
   id: Number,
@@ -31,7 +35,34 @@ class ParticipanteDAO {
     }
   }
 
+  /*
+   Insere os dados do participante no ParticipanteDAO
+*/
+  static insereParticipantesNoBancoDeDados (participantes){
+
+   
+    // Conectando ao MongoDB com usuário e senha
+    mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      authSource: 'admin'
+    })
+    .then(() => {
+      console.log('Conexão ao MongoDB estabelecida com sucesso.');
+      //Uso do DAO
+      participantes.forEach((participante) => {
+        ParticipanteDAO.adicionarParticipante(participante);
+      });
+    })
+    .catch((error) => {
+      console.error('Erro ao conectar ao MongoDB:', error);
+    })
+    .finally(() => {
+      // Feche a conexão aqui
+      mongoose.connection.close();
+    });
+  }
   // Outros métodos CRUD podem ser adicionados conforme necessário
 }
 
-module.exports = ParticipanteDAO;
+export default ParticipanteDAO;
