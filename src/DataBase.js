@@ -80,38 +80,36 @@ class DataBase {
       console.clear();
   }
 
-  static setParticipantes (arrayParticipantes, participante) {
-    console.log("Entrei em setParticipante")
-    if (isNaN(participante)){
-      console.log("participanten estah  vazio") 
-      this.participantes.length = 0; // Limpa o array existente
-      Array.prototype.push.apply(DataBase.participantes, arrayParticipantes);
-    } 
-    else {
-      console.log("Participante encontrado e inserido no vetor participantes")
-      DataBase.participantes.push(participante);
-    }
-    return DataBase.participantes;    
+  /*
+     Insere os dados do participante no ParticipanteDAO
+  */
+  static insereParticipantesNoBancoDeDados (participantes){
+
+    const ParticipanteDAO = require('./ParticipanteDAO'); 
+    const mongoose = require('mongoose');
+    
+    // Conectando ao MongoDB com usuário e senha
+    mongoose.connect('mongodb://admin:password@localhost:27017/seu-banco-de-dados', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      authSource: 'admin'
+    })
+    .then(() => {
+      console.log('Conexão ao MongoDB estabelecida com sucesso.');
+      //Uso do DAO
+      DataBase.participantes.forEach((participante) => {
+        ParticipanteDAO.adicionarParticipante(participante);
+      });
+    })
+    .catch((error) => {
+      console.error('Erro ao conectar ao MongoDB:', error);
+    })
+    .finally(() => {
+      // Feche a conexão aqui
+      mongoose.connection.close();
+    });
   }
-
-  
-  adicionarParticipante(participante){
-    DataBase.setParticipantes(DataBase.participantes, participante);
-    return this.participantes;
-  };
-
-  static ExcluirParticipante(id){
-    const novosParticipantes = DataBase.participantes.filter((participante) => participante.id !== id);
-    DataBase.setParticipantes(novosParticipantes);
-  };
-
-  static AtualizarParticipante(id, novoNome){
-    const novosParticipantes = DataBase.participantes.map((participante) =>
-      participante.id === id ? { ...participante, nome: novoNome } : participante
-    );
-    DataBase.setParticipantes(novosParticipantes);
-  };
-
+     
   static percorrerParticipantes(){
       console.log("Percorrendo todos os participantes:");
       DataBase.participantes.forEach((participante) => {
@@ -233,7 +231,10 @@ class DataBase {
     
     const coefVariacao = coeficienteDeVariacao(mediaPartic, stdDeviation);
     console.log("Coeficiente de Variacao:",coefVariacao)
- 
+
+    console.log("insere dados no banco de dados")
+    DataBase.insereParticipantesNoBancoDeDados(participantesOrdenados);
+
     // Calcula o índice de Gini
     const giniIndex = 1-(1- (2 * fatorDeLorenzAcumulado))
 
