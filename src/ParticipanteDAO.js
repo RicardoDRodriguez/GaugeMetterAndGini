@@ -1,34 +1,14 @@
 
 
 
-const mongoose = require('mongoose');
-const uri = 'mongodb://admin:password@localhost:27017/JistiDatabase'
-
- // Definindo o esquema do Participante   
-const participanteSchema = new mongoose.Schema({
-  sala: String,
-  id: Number,
-  sequencia: Number,
-  nome: String,
-  avatar: String,
-  entradaNaSala: Number,
-  tempoDeFala: Number,
-  tempoDeFalaAcumulado: Number,
-  populacaoAcumulada: Number,
-  percentualAcumuloFala: Number,
-  fatorDeLorenz: Number,
-});
-
-// Criando o modelo Participante
-const ParticipanteModel = mongoose.model('Participante', participanteSchema);
 
 // Criando a classe DAO para interagir com o MongoDB
 class ParticipanteDAO {
   // Método para adicionar um participante
-  static async adicionarParticipante(participante) {
+  static adicionarParticipante(mongoose, ParticipanteModel, participante) {
     try {
       const novoParticipante = new ParticipanteModel(participante);
-      await novoParticipante.save();
+      novoParticipante.save();
       console.log('Participante adicionado com sucesso.');
     } catch (error) {
       console.error('Erro ao adicionar participante:', error);
@@ -40,9 +20,39 @@ class ParticipanteDAO {
 */
   static insereParticipantesNoBancoDeDados (participantes){
 
+    const mongoose = require('mongoose');
+    console.log('Instância de Mongoose criada:', mongoose);
+
+    const uri = 'mongodb://admin:password@localhost:27017/JistiDatabase'
+
+    // Definindo o esquema do Participante   
+    const participanteSchema = new mongoose.Schema({
+      sala: String,
+      id: Number,
+      sequencia: Number,
+      nome: String,
+      avatar: String,
+      entradaNaSala: Number,
+      tempoDeFala: Number,
+      tempoDeFalaAcumulado: Number,
+      populacaoAcumulada: Number,
+      percentualAcumuloFala: Number,
+      fatorDeLorenz: Number,
+    });
+
+    // Criando o modelo Participante
+    const ParticipanteModel = mongoose.model('Participante', participanteSchema);
+
+   /*  if (! mongoose.connect) {
+      console.log("Mongoose Connect não encontrado")
+      return
+    } else {
+      console.log("Mongoose console encontrado")
+    }
+    */
    
     // Conectando ao MongoDB com usuário e senha
-    mongoose.connect(uri, {
+     mongoose.connect(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       authSource: 'admin'
@@ -51,7 +61,7 @@ class ParticipanteDAO {
       console.log('Conexão ao MongoDB estabelecida com sucesso.');
       //Uso do DAO
       participantes.forEach((participante) => {
-        ParticipanteDAO.adicionarParticipante(participante);
+        ParticipanteDAO.adicionarParticipante(mongoose,ParticipanteModel,participante);
       });
     })
     .catch((error) => {

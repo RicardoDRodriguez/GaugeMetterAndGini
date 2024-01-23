@@ -1,8 +1,7 @@
 
-import Participante from "./Participante";
-import ParticipanteDAO from "./ParticipanteDAO";
-
-
+import Participante from "./Participante"
+import ParticipanteDAO from './ParticipanteDAO'
+console.log("ParticipanteDAO criado em DataBase", ParticipanteDAO)
 class DataBase {
 
   static participantes = [
@@ -204,12 +203,8 @@ class DataBase {
     console.log("Coeficiente de Variacao:",coefVariacao)
 
     console.log("insere dados no banco de dados")
-    try {
-      ParticipanteDAO.insereParticipantesNoBancoDeDados(participantesOrdenados);  
-    } catch (error) {
-      console.error('Não foi possivel processar banco de dados',error)
-    }
-
+    ParticipanteDAO.insereParticipantesNoBancoDeDados(participantesOrdenados);  
+    
     // Calcula o índice de Gini
     const giniIndex = 1-(1- (2 * fatorDeLorenzAcumulado))
 
