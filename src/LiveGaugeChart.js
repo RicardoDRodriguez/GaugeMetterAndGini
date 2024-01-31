@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import GaugeChart from "react-gauge-chart";
-import AvatarProgress from ("./AvatarProgress")
 
 const DataBase = require('./DataBase')
 const database = new DataBase()
@@ -25,13 +24,6 @@ const LiveGaugeChart = () => {
       } else if (newValue > 1) {
         newValue = 1
       }
-      const avatarResult = "";
-      await database.getParticipantesOrdenados.forEach((participante) => {
-        avatarResult += AvatarProgress(
-          participante.nome,
-          participante.avatar,
-          participante.percentualAcumuloFala);
-      })
 
       setValue(newValue);
 
@@ -55,9 +47,6 @@ const LiveGaugeChart = () => {
         textColor="black"
         formatTextValue={(value) => `${value.toFixed(0)}%`}
       />
-      <div>
-        {avatarResult}
-      </div>
     </div>
   );
 };

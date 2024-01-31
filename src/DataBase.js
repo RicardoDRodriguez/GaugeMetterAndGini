@@ -1,13 +1,14 @@
 
 const Participante = require("./Participante")
-const ParticipanteDAO = require('./ParticipanteDAO')
+//const ParticipanteDAO = require('./ParticipanteDAO')
 
 // Instanciar ParticipanteDAO
-const participanteDAO = new ParticipanteDAO();
+//const participanteDAO = new ParticipanteDAO();
+let participantesFinal = []
 
 class DataBase {
 
-  static participantes = [
+   static participantes = [
     //sala,id, sequencia, nome, avatar, entradaNaSala, tempoDeFala
     /*
      new Participante("Sem Interatividade",1, 1, "Pimentel", "avatar", 10, 4928),
@@ -77,7 +78,7 @@ class DataBase {
     //new Participante("Media Interatividade",20, 1, "Silvia", "avatar", 10, 300)
 
   ]
-
+   
 
   constructor() {
 
@@ -99,8 +100,8 @@ class DataBase {
     });
   };
   // Retorna os participantes ordenados
-  async getParticipantesOrdenados(){
-      return (DataBase.participantesOdernados);
+  async getParticipantes(){
+      return (participantesFinal);
   }
   async calcularGini() {
 
@@ -184,8 +185,8 @@ class DataBase {
       // Calcula a curva de Lorens
 
 
-    });
-
+    }) // forEach de participantes ordenados;
+    participantesFinal = participantesOrdenados;
 
     console.log("Tempo de fala ordenado:", aTempoFala)
     console.log("Participantes Ordenados Com populacaoAcumulada", participantesOrdenadosCompleto)
@@ -221,7 +222,7 @@ class DataBase {
     console.log("Coeficiente de Variacao:", coefVariacao)
 
     console.log(">>>>>> insere Participantes dados no banco de dados")
-    participanteDAO.insereParticipantesNoBancoDeDados(participantesOrdenadosCompleto)
+    //participanteDAO.insereParticipantesNoBancoDeDados(participantesOrdenadosCompleto)
     console.log(">>>>>> Participantes inseridos com sucesso")
 
     // Calcula o índice de Gini
