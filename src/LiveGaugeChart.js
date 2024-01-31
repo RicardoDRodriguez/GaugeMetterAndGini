@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import GaugeChart from "react-gauge-chart";
-import DataBase from "./DataBase";
+import AvatarProgress from ("./AvatarProgress")
+
+const DataBase = require('./DataBase')
+const database = new DataBase()
 
 const chartStyle = {
   height: 50
@@ -11,46 +14,51 @@ const LiveGaugeChart = () => {
 
   // Simulate live data updates
   useEffect(() => {
-    const interval = setInterval(() => {
+    const interval = setInterval(async () => {
       let newValue = 0
-      try { 
-          console.log("Entrei em userEffect")
-          newValue = DataBase.calcularGini(); // Gera o valor de gini entre  0 e 1          
-      } catch (error) {
-          newValue=0
-          console.error('Erro ao calcular o fator GINI', error);
-      }
-      console.log("New Valuw: ",newValue)
+
+      newValue = await database.calcularGini();
+      console.log("***** New Value: *****", newValue)
+
       if (newValue < 0) {
-        newValue =0;
-      } else if (newValue > 1){
+        newValue = 0;
+      } else if (newValue > 1) {
         newValue = 1
       }
+      const avatarResult = "";
+      await database.getParticipantesOrdenados.forEach((participante) => {
+        avatarResult += AvatarProgress(
+          participante.nome,
+          participante.avatar,
+          participante.percentualAcumuloFala);
+      })
 
       setValue(newValue);
-      
+
     }, 3000); // Update every 2 seconds
 
     return () => clearInterval(interval);
   }, []);
 
-  return (   
+  return (
     <div>
       <GaugeChart
         id="gauge-chart1"
         style={chartStyle}
         nrOfLevels={30}
-        arcWidth={0.3} 
+        arcWidth={0.3}
         // arcsLength={[0.2, 0.2, 0.2, 0.2, 0.2]}
         colors={["#FF5F6D", "#FFB200", "#F2FF00", "#00FFDD", "#00FF00"]}
-        labels={["Pouco dialogico","","","","Muito Dialogico"]}
+        labels={["Pouco dialogico", "", "", "", "Muito Dialogico"]}
         percent={value}
         arcPadding={0.02}
         textColor="black"
-        formatTextValue={(value) => `${value.toFixed(2)}%`}
-      /> 
-   </div>
-   
+        formatTextValue={(value) => `${value.toFixed(0)}%`}
+      />
+      <div>
+        {avatarResult}
+      </div>
+    </div>
   );
 };
 
