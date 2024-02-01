@@ -25,6 +25,7 @@ const LiveGaugeChart = () => {
         newValue = 1
       }
 
+
       setValue(newValue);
 
     }, 3000); // Update every 2 seconds

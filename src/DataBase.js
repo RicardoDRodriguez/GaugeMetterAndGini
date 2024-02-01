@@ -4,13 +4,12 @@ const Participante = require("./Participante")
 
 // Instanciar ParticipanteDAO
 //const participanteDAO = new ParticipanteDAO();
-let participantesFinal = []
 
 class DataBase {
 
-   static participantes = [
+  static participantes = [
     //sala,id, sequencia, nome, avatar, entradaNaSala, tempoDeFala
-    /*
+    
      new Participante("Sem Interatividade",1, 1, "Pimentel", "avatar", 10, 4928),
      new Participante("Sem Interatividade",2, 1, "Amanda", "avatar", 10, 278),
      new Participante("Sem Interatividade",3, 1, "Sabrina", "avatar", 10, 267),
@@ -31,7 +30,7 @@ class DataBase {
      new Participante("Sem Interatividade",18, 1, "Monique", "avatar", 10, 0),
      new Participante("Sem Interatividade",19, 1, "Rodrigo", "avatar", 10, 0),
      new Participante("Sem Interatividade",20, 1, "Silvia", "avatar", 10, 0) 
-    */
+    
     /*
      new Participante("Total Interatividade",1, 1, "Pimentel", "avatar", 10, 300),
      new Participante("Total Interatividade",2, 1, "Amanda", "avatar", 10, 300),
@@ -55,7 +54,7 @@ class DataBase {
      new Participante("Total Interatividade",20, 1, "Silvia", "avatar", 10, 300)
     */
 
-
+    /*
     new Participante("Media Interatividade", 1, 1, "Pimentel", "avatar", 10, 2757),
     new Participante("Media Interatividade", 2, 1, "Amanda", "avatar", 10, 1225),
     new Participante("Media Interatividade", 3, 1, "Sabrina", "avatar", 10, 513),
@@ -76,9 +75,9 @@ class DataBase {
     //new Participante("Media Interatividade",18, 1, "Monique", "avatar", 10, 300),
     //new Participante("Media Interatividade",19, 1, "Rodrigo", "avatar", 10, 300),
     //new Participante("Media Interatividade",20, 1, "Silvia", "avatar", 10, 300)
-
+    */
   ]
-   
+
 
   constructor() {
 
@@ -100,9 +99,19 @@ class DataBase {
     });
   };
   // Retorna os participantes ordenados
-  async getParticipantes(){
-      return (participantesFinal);
+  async getParticipantes() {
+    const participantesFinal = DataBase.participantes.slice().sort((a, b) => b.tempoDeFala - a.tempoDeFala);
+    const totalTempoDeFalaEmMinutos = DataBase.participantes.reduce(
+      (total, participante) => total + parseInt(participante.tempoDeFala),0);
+      let index = 0
+      participantesFinal.forEach((participante) => {
+          participantesFinal[index].percentualAcumuloFala =
+            ((participantesFinal[index].tempoDeFala / totalTempoDeFalaEmMinutos) * 100);
+        ++index;
+      })
+    return (participantesFinal);
   }
+
   async calcularGini() {
 
     const math = require('mathjs');
@@ -186,8 +195,7 @@ class DataBase {
 
 
     }) // forEach de participantes ordenados;
-    participantesFinal = participantesOrdenados;
-
+ 
     console.log("Tempo de fala ordenado:", aTempoFala)
     console.log("Participantes Ordenados Com populacaoAcumulada", participantesOrdenadosCompleto)
 
@@ -248,4 +256,4 @@ class DataBase {
 
 };
 
-module.exports=DataBase;
+module.exports = DataBase;

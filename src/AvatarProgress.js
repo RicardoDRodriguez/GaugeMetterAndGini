@@ -1,37 +1,48 @@
 // AvatarProgress.js
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import ProgressBar from "@ramonak/react-progress-bar";
 
-//const AvatarProgress = ({ data }) => {
+const DataBase = require('./DataBase')
+const database = new DataBase()
 
+let participants = await database.getParticipantes()
+/*
+[
+    { id: 1, name: 'Participante 1', progress: 30 },
+    { id: 2, name: 'Participante 2', progress: 49},
+    // Adicione mais participantes conforme necessário
+  ]
+*/
 const AvatarProgress = () => {
-    // Estados para controlar o progresso de cada barra
-    const numBars =5;
+   const [participantsProgress, setParticipantsProgress] = useState(participants);
 
-    // Vetor de estados para controlar o progresso de cada barra
-    const [progressBars, setProgressBars] = useState(Array(numBars).fill(0));
+  useEffect(() => {
+    const interval = setInterval(() => {
+      participants = database.getParticipantes()
+      // Atualiza o progresso de cada participante a cada 2000 milissegundos (2 segundo)
+      setParticipantsProgress((prevParticipants) =>
+        prevParticipants.map((participant) => ({
+          ...participant,
+          percentualAcumuloFala: participant.percentualAcumuloFala < 100 ? participant.percentualAcumuloFala  : 100,
+        }))
+      );
+    }, 2000);
 
-    // Função para atualizar o progresso de uma barra específica
-    const updateProgress = (index) => {
-        setProgressBars((prevProgressBars) => {
-            const newProgressBars = [...prevProgressBars];
-            newProgressBars[index] = newProgressBars[index] < 100 ? newProgressBars[index] + 10 : 100;
-            return newProgressBars;
-        });
-    };
+    // Limpa o intervalo quando o componente é desmontado
+    return () => clearInterval(interval);
+  }, []); // O array vazio assegura que o efeito só é executado uma vez, semelhante ao componentDidMount
 
-    return (
-        <div>
-            {/* Mapeando o vetor de barras de progresso */}
-            {progressBars.map((progress, index) => (
-                <div key={index}>
-                    {/* Cada barra de progresso */} 
-                    <ProgressBar completed={progress} />
-                <p>&nbsp;</p>    
-                </div>
-            ))}
+  return (
+    <div>
+      {participantsProgress.map((participant) => (
+        <div key={participant.id}>
+          <h3>{participant.nome}</h3>
+          <ProgressBar completed={participant.percentualAcumuloFala.toFixed(0)}
+                       customLabel= {`${participant.percentualAcumuloFala.toFixed(0)}%`} />
         </div>
-    );
+      ))}
+    </div>
+  );
 };
 
 export default AvatarProgress;
