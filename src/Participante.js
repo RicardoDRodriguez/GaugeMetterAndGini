@@ -11,7 +11,6 @@ class Participante {
     this.populacaoAcumulada = 0;
     this.percentualAcumuloFala = 0;
     this.fatorDeLorenz = 0;
-    // console.log("Participante construido:", this)
     return this
   }
 }

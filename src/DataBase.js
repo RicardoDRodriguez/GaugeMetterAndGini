@@ -1,15 +1,18 @@
 
+//import ApiLinks  from './ApiLinks';
+
 const Participante = require("./Participante")
-//const ParticipanteDAO = require('./ParticipanteDAO')
 
 // Instanciar ParticipanteDAO
-//const participanteDAO = new ParticipanteDAO();
+const ParticipanteDAO = require('./ParticipanteDAO')
+const participanteDAO = new ParticipanteDAO();
+
 
 class DataBase {
 
   static participantes = [
     //sala,id, sequencia, nome, avatar, entradaNaSala, tempoDeFala
-    
+    /*
      new Participante("Sem Interatividade",1, 1, "Pimentel", "avatar", 10, 4928),
      new Participante("Sem Interatividade",2, 1, "Amanda", "avatar", 10, 278),
      new Participante("Sem Interatividade",3, 1, "Sabrina", "avatar", 10, 267),
@@ -30,7 +33,8 @@ class DataBase {
      new Participante("Sem Interatividade",18, 1, "Monique", "avatar", 10, 0),
      new Participante("Sem Interatividade",19, 1, "Rodrigo", "avatar", 10, 0),
      new Participante("Sem Interatividade",20, 1, "Silvia", "avatar", 10, 0) 
-    
+    */
+
     /*
      new Participante("Total Interatividade",1, 1, "Pimentel", "avatar", 10, 300),
      new Participante("Total Interatividade",2, 1, "Amanda", "avatar", 10, 300),
@@ -54,7 +58,7 @@ class DataBase {
      new Participante("Total Interatividade",20, 1, "Silvia", "avatar", 10, 300)
     */
 
-    /*
+   
     new Participante("Media Interatividade", 1, 1, "Pimentel", "avatar", 10, 2757),
     new Participante("Media Interatividade", 2, 1, "Amanda", "avatar", 10, 1225),
     new Participante("Media Interatividade", 3, 1, "Sabrina", "avatar", 10, 513),
@@ -71,11 +75,7 @@ class DataBase {
     new Participante("Media Interatividade", 14, 1, "Felipe", "avatar", 10, 60),
     new Participante("Media Interatividade", 15, 1, "Isis", "avatar", 10, 43),
     new Participante("Media Interatividade", 16, 1, "Jones", "avatar", 10, 21),
-    //new Participante("Media Interatividade",17, 1, "Monica", "avatar", 10, 300),
-    //new Participante("Media Interatividade",18, 1, "Monique", "avatar", 10, 300),
-    //new Participante("Media Interatividade",19, 1, "Rodrigo", "avatar", 10, 300),
-    //new Participante("Media Interatividade",20, 1, "Silvia", "avatar", 10, 300)
-    */
+       
   ]
 
 
@@ -175,7 +175,8 @@ class DataBase {
           (participante.percentualAcumuloFala / 100 - percentualAcumuloFalaAnterior / 100)) * 0.5);
         participante.fatorDeLorenz = fatorDeLorenz;
         fatorDeLorenzAcumulado += fatorDeLorenz
-        /**
+
+        /*
          console.log ("População acumulada anterior:", populacaoAcumuladaAnterior)
          console.log ("População acumulada:", acumulaPercentual)
          console.log ("percentual acumula fala:", participante.percentualAcumuloFala)
@@ -184,6 +185,7 @@ class DataBase {
          */
 
       }
+      
       // Guarda vetor em participantesOrdenadosCompleto
       participantesOrdenadosCompleto.push(participante);
 
@@ -225,12 +227,11 @@ class DataBase {
 
     }
 
-
     const coefVariacao = coeficienteDeVariacao(mediaPartic, stdDeviation);
     console.log("Coeficiente de Variacao:", coefVariacao)
 
     console.log(">>>>>> insere Participantes dados no banco de dados")
-    //participanteDAO.insereParticipantesNoBancoDeDados(participantesOrdenadosCompleto)
+   // await participanteDAO.insereParticipantesNoBancoDeDados(participantesOrdenadosCompleto)
     console.log(">>>>>> Participantes inseridos com sucesso")
 
     // Calcula o índice de Gini
@@ -238,8 +239,6 @@ class DataBase {
     console.log('Índice de Gini:', giniIndex);
     return giniIndex;
   };
-
-
 
   async calcularMediaTempoDeFala() {
     if (DataBase.participantes.length === 0) {
