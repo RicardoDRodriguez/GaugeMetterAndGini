@@ -6,14 +6,15 @@ const DataBase = require('./DataBase')
 const database = new DataBase()
 
 let participants = await database.getParticipantes()
-
+let nomeSala = participants[0].sala;
 const AvatarProgress = () => {
  
   const [participantsProgress, setParticipantsProgress] = useState(participants);
-
+  
   useEffect(() => {
     const interval = setInterval(async () => {
       participants =  database.getParticipantes()
+      
       // Atualiza o progresso de cada participante a cada 2000 milissegundos (2 segundo)
       setParticipantsProgress((prevParticipants) =>
         prevParticipants.map((participant) => ({
@@ -29,11 +30,14 @@ const AvatarProgress = () => {
 
   return (
     <div>
+      <div key={nomeSala} align="center">
+      <h5>{nomeSala}</h5>
+      </div>
       {participantsProgress.map((participant) => (
         <div key={participant.id} align="left">
           <span style={{ marginRight: '10px' }}>{participant.nome}</span>
-          <ProgressBar completed={participant.percentualAcumuloFala.toFixed(0)}
-            customLabel={`${participant.percentualAcumuloFala.toFixed(0)}%`}
+          <ProgressBar completed={participant.percentualAcumuloFala.toFixed(1)}
+            customLabel={`${participant.percentualAcumuloFala.toFixed(1)}%`}
             labelAlignment='outside'
             labelColor='black'
             bgColor={"#ef6c00"} />

@@ -42,7 +42,7 @@ const LiveGaugeChart = () => {
         arcWidth={0.3}
         // arcsLength={[0.2, 0.2, 0.2, 0.2, 0.2]}
         colors={["#FF5F6D", "#FFB200", "#F2FF00", "#00FFDD", "#00FF00"]}
-        labels={["Pouco dialogico", "", "", "", "Muito Dialogico"]}
+        labels={["Concentrado em Um", "Concentrado em poucos", "&nbsp", "", "Distribuição iqualitária dos tempos"]}
         percent={value}
         arcPadding={0.02}
         textColor="black"

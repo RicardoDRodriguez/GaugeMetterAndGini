@@ -19,7 +19,7 @@ function App() {
       </style>
       <Row className="justify-content-md-center">
         <Col md={12} className="text-center">
-          <h3>Indicador Dialógico</h3>
+          <h3>Participômetro</h3>
         </Col>
       </Row>
 
