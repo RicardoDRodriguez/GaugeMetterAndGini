@@ -59,5 +59,8 @@
   "main": "ParticipanteDAO copy.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "3.3.0"
+  }
 }

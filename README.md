@@ -68,3 +68,66 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+#### Versão 1 do Calculo - Desatualizada
+
+
+    /**
+     * Versão 1.0 - Desatualizada
+     */
+
+    /* participantesOrdenados.forEach((participante) => {
+      // Carrega vetor de tempo de fala
+      contador += 1;
+      if (contador < (participantesOrdenados.length - 1)) {
+        aTempoFala.push(participante.tempoDeFala)
+
+        // Carrega Vetor de fator percentual
+        acumulaPercentual += fatorPercentual
+        aFatorPercentual.push(acumulaPercentual)
+
+        // Calcula tempo de Fala Acumulado
+        tempoDeFalaAcumulado += participante.tempoDeFala
+
+        // Atualiza percentual acumulado 
+        participante.populacaoAcumulada = acumulaPercentual
+
+        // Atualiza tempo de fala acumulado
+        participante.tempoDeFalaAcumulado = tempoDeFalaAcumulado
+        participante.percentualAcumuloFala = (tempoDeFalaAcumulado / somaAcumulativa) * 100
+
+        // Calcula o fator de Lorens
+
+        if (!privez) {
+         
+            Os valores apresentados são percentuais, por isso a divisão por 100
+         
+          var fatorDeLorenz = (((populacaoAcumuladaAnterior / 100 + acumulaPercentual / 100) *
+            (participante.percentualAcumuloFala / 100 - percentualAcumuloFalaAnterior / 100)) * 0.5);
+          participante.fatorDeLorenz = fatorDeLorenz;
+          fatorDeLorenzAcumulado += fatorDeLorenz
+
+         
+          console.log ("População acumulada anterior:", populacaoAcumuladaAnterior)
+          console.log ("População acumulada:", acumulaPercentual)
+          console.log ("percentual acumula fala:", participante.percentualAcumuloFala)
+          console.log ("Percentual acumula anterior", percentualAcumuloFalaAnterior)
+          console.log ("Fator de Lorenz", fatorDeLorenz)
+         
+
+        }
+
+        // Guarda vetor em participantesOrdenadosCompleto
+        participantesOrdenadosCompleto.push(participante);
+
+        populacaoAcumuladaAnterior = participante.populacaoAcumulada
+        percentualAcumuloFalaAnterior = participante.percentualAcumuloFala
+
+        privez = false
+        // Calcula a curva de Lorens
+
+      }
+    }) // forEach de participantes ordenados;
+    */ 
+

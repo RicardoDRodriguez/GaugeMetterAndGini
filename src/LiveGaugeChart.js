@@ -46,7 +46,7 @@ const LiveGaugeChart = () => {
         percent={value}
         arcPadding={0.02}
         textColor="black"
-        formatTextValue={(value) => `${value.toFixed(0)}%`}
+        formatTextValue={(value) => `${value.toFixed(1)}%`}
       />
     </div>
   );
