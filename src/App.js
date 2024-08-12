@@ -20,6 +20,8 @@ function App() {
       <Row className="justify-content-md-center">
         <Col md={12} className="text-center">
           <h3>Participômetro</h3>
+          <h5>DISTRIBUIÇÃO DOS TEMPOS DE FALA</h5>
+          <br/>
         </Col>
       </Row>
 
