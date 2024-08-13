@@ -19,9 +19,9 @@ function App() {
       </style>
       <Row className="justify-content-md-center">
         <Col md={12} className="text-center">
-          <h3>Participômetro</h3>
-          <h5>DISTRIBUIÇÃO DOS TEMPOS DE FALA</h5>
-          <br/>
+        <h3>Igualitômetro</h3>
+          <h5><font color='A0A0A0'>(Igualdade dos Tempos de Fala)</font></h5>
+          <br/><br/>
         </Col>
       </Row>
 
@@ -35,14 +35,6 @@ function App() {
       <p>&nbsp;</p>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
-      <p>&nbsp;</p>
-
-      {/* Linha para o título de 'Participações Individuais' */}
-      <Row className="justify-content-md-center">
-        <Col md={12} className="text-center">
-          <h3>Participações Individuais</h3>
-        </Col>
-      </Row>
 
       {/* Linha para AvatarProgress */}
       <Row className="justify-content-md-center">

@@ -30,9 +30,6 @@ const AvatarProgress = () => {
 
   return (
     <div>
-      <div key={nomeSala} align="center">
-      <h5>{nomeSala}</h5>
-      </div>
       {participantsProgress.map((participant) => (
         <div key={participant.id} align="left">
           <span style={{ marginRight: '10px' }}>{participant.nome}</span>
