@@ -36,22 +36,19 @@ const LiveGaugeChart = () => {
 
   return (
     <div>
-      <div style={{ position: 'absolute', top: '18%', left: '42%', transform: 'translate(-50%, -50%)', color: '#E4080A' }}>
+      <div style={{ position: 'absolute', top: '15.5%', left: '41%', transform: 'translate(-50%, -50%)', color: '#E4080A' }}>
         <span color= '#E4080A'><b>CONCENTRADA</b></span>
       </div>
-      <div style={{ position: 'absolute', top: '7%', left: '50%', transform: 'translate(-50%, -50%)', color: '#7DDA58' }}>
+      <div style={{ position: 'absolute', top: '5.5%', left: '50%', transform: 'translate(-50%, -50%)', color: '#7DDA58' }}>
         <span><b>MODERADA</b></span>
       </div>
-      <div style={{ position: 'absolute', top: '18%', left: '58%', transform: 'translate(-50%, -50%)', color: '#5DE2E7' }}>
+      <div style={{ position: 'absolute', top: '15.5%', left: '65%', transform: 'translate(-50%, -50%)', color: '#5DE2E7' }}>
         <span><b>IGUALITÁRIA</b></span>
       </div>
       <GaugeChart
         id="gauge-chart1"
         style={chartStyle}
-        //nrOfLevels={30}
-        //arcWidth={0.3}
         arcsLength={[0.1, 0.1, 0.1, 0.4, 0.3]}
-        //colors={["#FF5F6D", "#FFB200", "#F2FF00", "#00FFDD", "#00FF00"]}
         colors={["#E4080A", "#FF9101", "#FFDE59", "#7DDA58", "#5DE2E7"]}
         percent={value}
         arcPadding={0.00}

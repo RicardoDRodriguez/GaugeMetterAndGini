@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import LiveGaugeChart from './LiveGaugeChart';
 import AvatarProgress from './AvatarProgress'
 import { Container, Row, Col } from 'react-bootstrap';
@@ -6,7 +6,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
+  /*
+  useEffect(() => {
+    const interval = setInterval(() => {
+      window.location.reload();
+    }, 7000); // 5000 milissegundos = 5 segundos
 
+    return () => clearInterval(interval); // Limpa o intervalo quando o componente é desmontado
+  }, []);
+  */
   return (
     <Container>
       <style>
@@ -20,7 +28,7 @@ function App() {
       <Row className="justify-content-md-center">
         <Col md={12} className="text-center">
         <h3>Igualitômetro</h3>
-          <h5><font color='A0A0A0'>(Igualdade dos Tempos de Fala)</font></h5>
+          <r5>(Igualdade dos Tempos de Fala)</r5>
           <br/><br/>
         </Col>
       </Row>

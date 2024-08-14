@@ -5,7 +5,7 @@ import ProgressBar from "@ramonak/react-progress-bar";
 const DataBase = require('./DataBase')
 const database = new DataBase()
 
-let participants = await database.getParticipantes()
+let participants = await database.getParticipantesPercentualAcumuloFala()
 let nomeSala = participants[0].sala;
 const AvatarProgress = () => {
  
@@ -13,13 +13,13 @@ const AvatarProgress = () => {
   
   useEffect(() => {
     const interval = setInterval(async () => {
-      participants =  database.getParticipantes()
+      participants =  database.getParticipantesPercentualAcumuloFala()
       
       // Atualiza o progresso de cada participante a cada 2000 milissegundos (2 segundo)
       setParticipantsProgress((prevParticipants) =>
         prevParticipants.map((participant) => ({
           ...participant,
-          percentualAcumuloFala: participant.percentualAcumuloFala < 0 ? 0 : participant.percentualAcumuloFala
+          percentualAcumuloFala: participant.fatorRiquezaAbsoluta < 0 ? 0 : participant.fatorRiquezaAbsoluta*100
         }))
       );
     }, 3000); // Update every 3 seconds
