@@ -27,8 +27,8 @@ class DataBase {
     new Participante("Apresentação dialogada", 7, 1, "1-Ricardo"    , "avatar", 10, 0, 300),
     */
     //1
-    
     /*
+    
      new Participante("Aula 1 Turma 3: Apresentação dialogada", 1, 1, "Professor", "avatar", 10, 3006, 3600),
      new Participante("Apresentação dialogada", 2, 1, "Sara"     , "avatar", 10, 24, 3600),
      new Participante("Apresentação dialogada", 3, 1, "Elisa G"  , "avatar", 10, 12, 3600),
@@ -70,7 +70,7 @@ class DataBase {
     new Participante("Apresentando-se para a Turma",18, 1, "Samanta"  , "avatar", 10, 0, 3600)
    */
    //3
-   /* 
+    /*
      new Participante("Aula 2 Turma 3: Apresentando-se (conversação em fila)"    , 1, 1, "Professor", "avatar", 10, 852, 3600),
      new Participante("Apresentando-se (conversação em fila)"    , 2, 1, "Reinaldo" , "avatar", 10, 276, 3600),
      new Participante("Apresentando-se (conversação em fila)"    , 3, 1, "Ivana"    , "avatar", 10, 192, 3600),
@@ -117,7 +117,7 @@ class DataBase {
     new Participante("Apresentação dialogada (focada no professor)"    ,18, 1, "Sara"     , "avatar", 10, 0, 7200),
     */
    //5
-     /*
+    /* 
       new Participante("Aula 9 Turma 3- Baseada em atividade Assíncrona", 1, 1, "Professor"  , "avatar", 10, 2760, 3600),
       new Participante("Conversa centrada no Professor e Elisa"    , 2, 1, "Elisa"      , "avatar", 10, 1224, 3600),
       new Participante("Conversa centrada no Professor e Elisa"    , 3, 1, "Débora"     , "avatar", 10, 516, 3600),

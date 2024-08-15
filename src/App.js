@@ -28,7 +28,7 @@ function App() {
       <Row className="justify-content-md-center">
         <Col md={12} className="text-center">
         <h3>Participômetro</h3>
-          <r5>(Igualdade dos Tempos de Fala)</r5>
+          <r5>(Distribuição dos Tempos de Fala)</r5>
           <br/><br/><br/>
         </Col>
       </Row>
