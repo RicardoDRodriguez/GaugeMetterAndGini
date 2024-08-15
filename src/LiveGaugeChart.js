@@ -36,13 +36,13 @@ const LiveGaugeChart = () => {
 
   return (
     <div>
-      <div style={{ position: 'absolute', top: '15.5%', left: '41%', transform: 'translate(-50%, -50%)', color: '#E4080A' }}>
+      <div style={{ position: 'absolute', top: '17.5%', left: '44%', transform: 'translate(-50%, -50%)', color: '#E4080A' }}>
         <span color= '#E4080A'><b>CONCENTRADA</b></span>
       </div>
-      <div style={{ position: 'absolute', top: '5.5%', left: '50%', transform: 'translate(-50%, -50%)', color: '#7DDA58' }}>
+      <div style={{ position: 'absolute', top: '6.5%', left: '50%', transform: 'translate(-50%, -50%)', color: '#7DDA58' }}>
         <span><b>MODERADA</b></span>
       </div>
-      <div style={{ position: 'absolute', top: '15.5%', left: '65%', transform: 'translate(-50%, -50%)', color: '#5DE2E7' }}>
+      <div style={{ position: 'absolute', top: '17.5%', left: '56.5%', transform: 'translate(-50%, -50%)', color: '#5DE2E7' }}>
         <span><b>IGUALITÁRIA</b></span>
       </div>
       <GaugeChart

@@ -27,8 +27,8 @@ class DataBase {
     new Participante("Apresentação dialogada", 7, 1, "1-Ricardo"    , "avatar", 10, 0, 300),
     */
     //1
-    /*
     
+    /*
      new Participante("Aula 1 Turma 3: Apresentação dialogada", 1, 1, "Professor", "avatar", 10, 3006, 3600),
      new Participante("Apresentação dialogada", 2, 1, "Sara"     , "avatar", 10, 24, 3600),
      new Participante("Apresentação dialogada", 3, 1, "Elisa G"  , "avatar", 10, 12, 3600),
@@ -91,11 +91,11 @@ class DataBase {
      new Participante("Apresentando-se (conversação em fila)"    ,18, 1, "Pedro"    , "avatar", 10, 0, 3600),
      new Participante("Apresentando-se (conversação em fila)"    ,18, 1, "Roberto"  , "avatar", 10, 0, 3600),
      new Participante("Apresentando-se (conversação em fila)"    ,18, 1, "Samanta"  , "avatar", 10, 0, 3600),
-    
     */
+    
     //4
-     
-   /* new Participante("Aula 2 Turma 3: Apresentação dialogada (focada no professor)"    , 1, 1, "Professor", "avatar", 10, 4926, 7200),
+    /* 
+    new Participante("Aula 2 Turma 3: Apresentação dialogada (focada no professor)"    , 1, 1, "Professor", "avatar", 10, 4926, 7200),
     new Participante("Apresentação dialogada (focada no professor)"    , 2, 1, "Amora"    , "avatar", 10, 276, 7200),
     new Participante("Apresentação dialogada (focada no professor)"    , 3, 1, "Samanta"  , "avatar", 10, 270, 7200),
     new Participante("Apresentação dialogada (focada no professor)"    , 4, 1, "Ivana"    , "avatar", 10, 252, 7200),
@@ -117,7 +117,7 @@ class DataBase {
     new Participante("Apresentação dialogada (focada no professor)"    ,18, 1, "Sara"     , "avatar", 10, 0, 7200),
     */
    //5
-    
+     /*
       new Participante("Aula 9 Turma 3- Baseada em atividade Assíncrona", 1, 1, "Professor"  , "avatar", 10, 2760, 3600),
       new Participante("Conversa centrada no Professor e Elisa"    , 2, 1, "Elisa"      , "avatar", 10, 1224, 3600),
       new Participante("Conversa centrada no Professor e Elisa"    , 3, 1, "Débora"     , "avatar", 10, 516, 3600),
@@ -134,8 +134,8 @@ class DataBase {
       new Participante("Conversa centrada no Professor e Elisa"    ,14, 1, "Marcelo"    , "avatar", 10, 60, 3600),
       new Participante("Conversa centrada no Professor e Elisa"    ,15, 1, "Anderson"   , "avatar", 10, 42, 3600),
       new Participante("Conversa centrada no Professor e Elisa"    ,16, 1, "Daiana"     , "avatar", 10, 18, 3600),
-    
-    
+    */
+      
     //6
     /*
      new Participante("Aula 7 Turma 2: Conversação Livre (Atividade post-it)"    , 1, 1, "Professor"   , "avatar", 10, 828, 3600),
@@ -156,7 +156,7 @@ class DataBase {
      new Participante("Conversação Livre (Atividade post-it)"    ,16, 1, "Mario"     , "avatar", 10, 0, 3600),
     */
     //7
-    /*
+    
      new Participante("Aula 7 Turma 2: Aula dialogada - Tecnologias Digitais"    , 1, 1, "Professor"   , "avatar", 10, 4014, 7200),
      new Participante("Aula dialogada - Tecnologias Digitais"    , 2, 1, "Manuela"     , "avatar", 10, 444, 7200),
      new Participante("Aula dialogada - Tecnologias Digitais"    , 3, 1, "Angela"      , "avatar", 10, 348, 7200),
@@ -173,7 +173,7 @@ class DataBase {
      new Participante("Aula dialogada - Tecnologias Digitais"    ,14, 1, "Leonardo G." , "avatar", 10, 0, 7200),
      new Participante("Aula dialogada - Tecnologias Digitais"    ,15, 1, "Patricia"    , "avatar", 10, 0, 7200),
      new Participante("Aula dialogada - Tecnologias Digitais"    ,16, 1, "Ronaldo"     , "avatar", 10, 0, 7200),
-     */
+     
  
     /* 
       new Participante("Sem Interatividade",1, 1, "Pimentel", "avatar", 10, 4928),

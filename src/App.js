@@ -27,9 +27,9 @@ function App() {
       </style>
       <Row className="justify-content-md-center">
         <Col md={12} className="text-center">
-        <h3>Igualitômetro</h3>
+        <h3>Participômetro</h3>
           <r5>(Igualdade dos Tempos de Fala)</r5>
-          <br/><br/>
+          <br/><br/><br/>
         </Col>
       </Row>
 
@@ -43,6 +43,7 @@ function App() {
       <p>&nbsp;</p>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
+
 
       {/* Linha para AvatarProgress */}
       <Row className="justify-content-md-center">
