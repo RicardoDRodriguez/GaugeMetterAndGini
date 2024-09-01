@@ -6,7 +6,7 @@ const DataBase = require('./DataBase')
 const database = new DataBase()
 
 let participants = await database.getParticipantesPercentualAcumuloFala()
-let nomeSala = participants[0].sala;
+//let nomeSala = participants[0].sala;
 const AvatarProgress = () => {
  
   const [participantsProgress, setParticipantsProgress] = useState(participants);
